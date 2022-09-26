@@ -11,7 +11,7 @@
             Check out what happens below. Now go change the value of message in
             our components script area and see what happens.
           </p>
-          <p>{{}}</p>
+          <p>{{state.message}}</p>
         </div>
         <div class="border p-1">
           <h5>Two Way Data Binding</h5>
@@ -22,9 +22,9 @@
             value changes.
           </p>
           <!-- add a v-model to this input that will reference "myName" within the state object-->
-          <input />
+          <input v-model="state.myName"/>
           <!-- reference "myName" from the state -->
-          <p>{{}}</p>
+          <p>{{state.myName}}</p>
         </div>
         <div class="border p-1">
           <h5>Class Binding</h5>
@@ -35,9 +35,9 @@
             property(isActive) to true. Notice Vue will rerender each time the
             value changes.
           </p>
-          <div class="red">
+          <div>
             <!-- add a class binding attribute to the p tag that references the state isActive value -->
-            <p>This text will turn green on active</p>
+            <p :class="{test:state.isActive, red:!state.isActive}">This text will turn green on active</p>
           </div>
         </div>
       </div>
@@ -57,6 +57,7 @@ export default {
       message: "Super secret message here!",
       //change isActive to true
       isActive: false,
+      myName:""
     });
     return { state };
   },
@@ -69,7 +70,7 @@ export default {
   color: red;
 }
 
-.active {
+.test {
   color: green;
 }
 </style>
